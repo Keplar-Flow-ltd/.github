@@ -35,7 +35,8 @@ jobs:
             echo "Warning: GOOGLE_APPS_SCRIPT_URL secret is not set. Using placeholder."
             exit 0
           fi
-          sed -i "s|__GOOGLE_APPS_SCRIPT_URL__|$GOOGLE_APPS_SCRIPT_URL|g" docs/form/index.html
+          escaped_url=$(printf '%s\n' "$GOOGLE_APPS_SCRIPT_URL" | sed -e 's/[\/&|]/\\&/g')
+          sed -i "s|{{GOOGLE_APPS_SCRIPT_URL}}|$escaped_url|g" docs/form/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

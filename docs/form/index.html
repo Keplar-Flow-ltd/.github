@@ -193,9 +193,9 @@
             formData.append("timestamp", new Date().toISOString());
 
             // Replaced at deploy time by GitHub Actions from the GOOGLE_APPS_SCRIPT_URL secret.
-            const scriptUrl = "__GOOGLE_APPS_SCRIPT_URL__";
+            const scriptUrl = "{{GOOGLE_APPS_SCRIPT_URL}}";
 
-            if (scriptUrl === "__GOOGLE_APPS_SCRIPT_URL__") {
+            if (scriptUrl === "{{GOOGLE_APPS_SCRIPT_URL}}") {
                 document.getElementById("errorMessage").textContent = "✗ Google Apps Script URL not configured. Please contact support.";
                 document.getElementById("errorMessage").style.display = "block";
                 document.getElementById("loadingMessage").style.display = "none";
