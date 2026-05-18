@@ -47,24 +47,29 @@ function doPost(e) {
    - Click "Deploy"
    - Copy the deployment URL
 
-4. **Update the Form**
-   - Open `index.html`
-   - Find the line: `const scriptUrl = 'YOUR_GOOGLE_APPS_SCRIPT_URL';`
-   - Replace `YOUR_GOOGLE_APPS_SCRIPT_URL` with your deployment URL
-   - Commit and push the changes
+4. **Add the URL as a Repository Secret**
+   - Go to Repository Settings > Secrets and variables > Actions
+   - Click "New repository secret"
+   - Name: `GOOGLE_APPS_SCRIPT_URL`
+   - Value: Paste your Google Apps Script deployment URL
+   - Click "Add secret"
+
+5. **Enable GitHub Pages**
+   - Go to Repository Settings > Pages
+   - Select Source: "GitHub Actions"
+   - The workflow will automatically deploy to GitHub Pages
 
 ## GitHub Pages Hosting
 
 The form is automatically hosted on GitHub Pages at:
 ```
-https://keplar-flow-ltd.github.io/join
+https://keplar-flow-ltd.github.io/.github/
 ```
 
-To enable GitHub Pages if not already enabled:
-1. Go to Repository Settings > Pages
-2. Select Source: Deploy from a branch
-3. Select Branch: main, Folder: /docs
-4. Save
+The GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) automatically:
+1. Reads the `GOOGLE_APPS_SCRIPT_URL` secret from repository settings
+2. Injects it into the form HTML
+3. Deploys to GitHub Pages on every push to main
 
 ## Testing
 
