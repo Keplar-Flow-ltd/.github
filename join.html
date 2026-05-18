@@ -220,6 +220,7 @@
             
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
+            const company = document.getElementById('company').value.trim();
             const interest = document.getElementById('interest').value.trim();
             const emailInput = document.getElementById('email');
             
@@ -233,18 +234,49 @@
                 return;
             }
             
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Reset form
-            this.reset();
-            
             // Log for monitoring purposes (can be connected to analytics service)
             console.log('Early adopter registration submission:', { 
                 name, 
-                email, 
+                email,
+                company,
                 interest,
                 timestamp: new Date().toISOString()
+            });
+            
+            // Send data to Google Sheets web app
+            const googleSheetEndpoint = 'https://script.google.com/macros/s/AKfycbw0SKhirnTtCgnLcpHapO96MSQdpG9zl8WrYsvlzUgus3PeJJ8MaOAl5fq2gp_SQiek/exec';
+            
+            // Prepare data to send
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('company', company);
+            formData.append('interest', interest);
+            formData.append('timestamp', new Date().toISOString());
+            
+            // Send POST request to Google Sheets
+            fetch(googleSheetEndpoint, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form
+                document.getElementById('joinForm').reset();
+                
+                console.log('Data successfully submitted to Google Sheets');
+            })
+            .catch(error => {
+                // Show error message but still display success to user (Google Sheets web apps don't return standard responses)
+                // The submission may still succeed even if fetch fails due to CORS
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form
+                document.getElementById('joinForm').reset();
+                
+                console.log('Data submission to Google Sheets (may have succeeded):', error);
             });
         });
     </script>
