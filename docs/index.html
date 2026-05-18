@@ -3,312 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Keplar Flow - Early Adopter Program</title>
+    <title>Keplar Flow - Early Adopter Landing</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #1f2937;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             padding: 20px;
         }
-        
         .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
+            max-width: 760px;
             width: 100%;
-            padding: 60px 40px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            padding: 56px 40px;
             text-align: center;
         }
-        
         h1 {
             color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2.5em;
+            font-size: 2.4rem;
+            margin-bottom: 12px;
         }
-        
         .subtitle {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 40px;
-            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 32px;
         }
-        
         .benefits {
             text-align: left;
-            background: #f8f9fa;
-            padding: 30px;
+            background: #f8fafc;
             border-radius: 8px;
-            margin-bottom: 40px;
+            padding: 24px;
+            margin-bottom: 28px;
         }
-        
-        .benefits h3 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.3em;
+        .benefits h2 {
+            color: #4f46e5;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
         }
-        
-        .benefit-item {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
+        .benefits ul {
+            padding-left: 20px;
         }
-        
-        .benefit-item:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-        
-        .benefit-item strong {
-            color: #333;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        label {
-            display: block;
+        .benefits li {
             margin-bottom: 8px;
-            color: #333;
-            font-weight: 500;
         }
-        
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            font-family: inherit;
-            font-size: 1em;
-            transition: border-color 0.3s;
-        }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .button {
+        .cta {
+            display: inline-block;
+            text-decoration: none;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 14px 40px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1em;
+            color: #fff;
             font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 14px 28px;
+            border-radius: 8px;
         }
-        
-        .button:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        .button:active:not(:disabled) {
-            transform: translateY(0);
-        }
-        
-        .button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-            text-align: center;
-        }
-        
-        .error-message {
-            display: none;
-            background: #f8d7da;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            color: #667eea;
-            margin-top: 10px;
+        .helper {
+            margin-top: 14px;
+            color: #6b7280;
+            font-size: 0.92rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 Join Keplar Flow</h1>
-        <p class="subtitle">
-            Register your interest to join our exclusive inner circle and get early access to transformative AI solutions, community tools, and strategic partnerships.
-        </p>
-        
-        <div class="benefits">
-            <h3>Why Join the Inner Circle?</h3>
-            <div class="benefit-item">
-                <strong>🛠️ Early Access to Liluts</strong>
-                Get first dibs on our open-source "Little Useful Things" community tools designed to eliminate daily operational toil.
-            </div>
-            <div class="benefit-item">
-                <strong>🧪 Beta Invitations</strong>
-                Be the first to test and deploy our emerging Agentic AI business ecosystems and scalable SaaS offerings.
-            </div>
-            <div class="benefit-item">
-                <strong>📈 Strategic Insights</strong>
-                Receive targeted, high-value updates on how we are leveraging Industry 5.0 to scale businesses frugally and effectively (FinOps).
-            </div>
-            <div class="benefit-item">
-                <strong>🤝 Network Onboarding</strong>
-                Gain prioritized invitations to our exclusive Discord channels and professional networking hubs once they go live.
-            </div>
-        </div>
-        
-        <form id="joinForm">
-            <div class="form-group">
-                <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="company">Company/Organization</label>
-                <input type="text" id="company" name="company">
-            </div>
-            
-            <div class="form-group">
-                <label for="interest">What interests you most about Keplar Flow? *</label>
-                <textarea id="interest" name="interest" required></textarea>
-            </div>
-            
-            <button type="submit" class="button" id="submitBtn">Register My Interest</button>
-            
-            <div class="loading" id="loadingMessage">
-                Submitting...
-            </div>
-            
-            <div class="success-message" id="successMessage">
-                ✓ Thank you for registering! We'll be in touch soon.
-            </div>
-            <div class="error-message" id="errorMessage">
-                ✗ Please fill in all required fields correctly.
-            </div>
-        </form>
-    </div>
-    
-    <script>
-        document.getElementById('joinForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const company = document.getElementById('company').value.trim();
-            const interest = document.getElementById('interest').value.trim();
-            const emailInput = document.getElementById('email');
-            
-            // Clear previous messages
-            document.getElementById('successMessage').style.display = 'none';
-            document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('loadingMessage').style.display = 'none';
-            
-            // Validate using HTML5 email validation via the input element
-            if (!name || !email || !interest || !emailInput.checkValidity()) {
-                document.getElementById('errorMessage').style.display = 'block';
-                return;
-            }
-            
-            // Show loading message
-            document.getElementById('loadingMessage').style.display = 'block';
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            
-            // Prepare form data
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('email', email);
-            formData.append('company', company);
-            formData.append('interest', interest);
-            formData.append('timestamp', new Date().toISOString());
-            
-            // POST to Google Apps Script endpoint
-            // Replace YOUR_GOOGLE_APPS_SCRIPT_URL with your actual Google Apps Script web app URL
-            const scriptUrl = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
-            
-            if (scriptUrl === 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
-                document.getElementById('errorMessage').textContent = '✗ Google Apps Script URL not configured. Please contact support.';
-                document.getElementById('errorMessage').style.display = 'block';
-                document.getElementById('loadingMessage').style.display = 'none';
-                submitBtn.disabled = false;
-                return;
-            }
-            
-            fetch(scriptUrl, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            })
-            .then(response => {
-                // With no-cors mode, we can't check the actual response
-                // So we assume success if the fetch completes without error
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('successMessage').textContent = '✓ Thank you for registering! We\'ll be in touch soon.';
-                
-                // Reset form
-                document.getElementById('joinForm').reset();
-                
-                // Log for monitoring purposes
-                console.log('Early adopter registration submission:', { 
-                    name, 
-                    email,
-                    company,
-                    interest,
-                    timestamp: new Date().toISOString()
-                });
-            })
-            .catch(error => {
-                console.error('Error submitting form:', error);
-                document.getElementById('errorMessage').textContent = '✗ Error submitting form. Please try again.';
-                document.getElementById('errorMessage').style.display = 'block';
-            })
-            .finally(() => {
-                document.getElementById('loadingMessage').style.display = 'none';
-                submitBtn.disabled = false;
-            });
-        });
-    </script>
+    <main class="container">
+        <h1>🚀 Keplar Flow Early Adopters</h1>
+        <p class="subtitle">Join our Vanguard Network and get first access to tools, pilots, and strategic updates.</p>
+        <section class="benefits" aria-labelledby="benefits-title">
+            <h2 id="benefits-title">What you get</h2>
+            <ul>
+                <li>Early access to Liluts and operational tooling.</li>
+                <li>Priority invitations for AI beta programs.</li>
+                <li>Industry 5.0 and FinOps insight updates.</li>
+                <li>Preferred onboarding to community channels.</li>
+            </ul>
+        </section>
+        <a class="cta" href="https://form.keplarflow.org" role="button" aria-label="Navigate to registration form">Go to registration form</a>
+        <p class="helper">Alternative access: <a href="https://keplar-flow-ltd.github.io/.github/form/">GitHub Pages form</a></p>
+    </main>
 </body>
 </html>
