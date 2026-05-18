@@ -36,7 +36,7 @@ We are actively building the foundation for a new era of equitable, resilient, a
 <br>
 
 <p align="center">
-  <a href="../../join.html">
+  <a href="../join.html">
     <img src="https://img.shields.io/badge/BECOME%20AN%20EARLY-ADOPTER-brightgreen?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDh6bS0xLTExSDV2Mmg2VjloNnYyaC02djJoNnYyaC02djJoNnYyaC04di0yaC0yVjdoMnYyeiIvPjwvc3ZnPg==" alt="Become an Early Adopter">
   </a>
 </p>
