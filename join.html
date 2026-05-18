@@ -224,11 +224,13 @@
         
         // Helper function to display success messages
         function showSuccessMessage() {
+            document.getElementById('errorMessage').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
         }
         
         // Helper function to display error messages
         function showErrorMessage(message) {
+            document.getElementById('successMessage').style.display = 'none';
             document.getElementById('errorMessage').textContent = message;
             document.getElementById('errorMessage').style.display = 'block';
         }
