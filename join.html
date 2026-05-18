@@ -245,6 +245,8 @@
             });
             
             // Send data to Google Sheets web app
+            // Note: The endpoint URL is publicly exposed in client-side code (common for public forms)
+            // The Google Apps Script should implement validation and rate limiting on the server side
             const googleSheetEndpoint = 'https://script.google.com/macros/s/AKfycbw0SKhirnTtCgnLcpHapO96MSQdpG9zl8WrYsvlzUgus3PeJJ8MaOAl5fq2gp_SQiek/exec';
             
             // Prepare data to send
@@ -256,24 +258,37 @@
             formData.append('timestamp', new Date().toISOString());
             
             // Send POST request to Google Sheets
-            // Note: Google Sheets web apps have CORS restrictions, so fetch may fail even if submission succeeds
+            // Using no-cors mode to bypass CORS restrictions (bypasses checks but returns opaque response)
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+            
             fetch(googleSheetEndpoint, {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors'  // Allow CORS-restricted responses
+                mode: 'no-cors',  // Bypass CORS checks; response will be opaque and unreadable
+                signal: controller.signal
             })
             .then(response => {
                 // With no-cors mode, we always get an opaque response
-                // The data was sent regardless
+                // The data was successfully sent
+                clearTimeout(timeout);
                 document.getElementById('successMessage').style.display = 'block';
                 document.getElementById('joinForm').reset();
-                console.log('Data submitted to Google Sheets');
+                console.log('Data successfully submitted to Google Sheets');
             })
             .catch(error => {
-                // Even network errors may have allowed the request to be sent
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('joinForm').reset();
-                console.log('Data submission to Google Sheets (sent despite error):', error.message);
+                clearTimeout(timeout);
+                // Check if this was a timeout
+                if (error.name === 'AbortError') {
+                    console.log('Request timeout: Network may be slow or endpoint unavailable');
+                    document.getElementById('errorMessage').textContent = '✗ Connection timeout. Please check your internet and try again.';
+                    document.getElementById('errorMessage').style.display = 'block';
+                } else {
+                    // Network error or other failure
+                    console.log('Network error:', error.message);
+                    document.getElementById('errorMessage').textContent = '✗ Network error. Please try again.';
+                    document.getElementById('errorMessage').style.display = 'block';
+                }
             });
         });
     </script>
