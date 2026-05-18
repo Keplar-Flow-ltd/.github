@@ -192,9 +192,9 @@
             formData.append("interest", interest);
             formData.append("timestamp", new Date().toISOString());
 
-            const scriptUrl = "YOUR_GOOGLE_APPS_SCRIPT_URL";
+            const scriptUrl = "__GOOGLE_APPS_SCRIPT_URL__";
 
-            if (scriptUrl === "YOUR_GOOGLE_APPS_SCRIPT_URL") {
+            if (scriptUrl === "__GOOGLE_APPS_SCRIPT_URL__") {
                 document.getElementById("errorMessage").textContent = "✗ Google Apps Script URL not configured. Please contact support.";
                 document.getElementById("errorMessage").style.display = "block";
                 document.getElementById("loadingMessage").style.display = "none";
