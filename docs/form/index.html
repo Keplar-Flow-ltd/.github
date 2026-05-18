@@ -192,6 +192,7 @@
             formData.append("interest", interest);
             formData.append("timestamp", new Date().toISOString());
 
+            // Replaced at deploy time by GitHub Actions from the GOOGLE_APPS_SCRIPT_URL secret.
             const scriptUrl = "__GOOGLE_APPS_SCRIPT_URL__";
 
             if (scriptUrl === "__GOOGLE_APPS_SCRIPT_URL__") {
