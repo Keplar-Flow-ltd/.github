@@ -206,16 +206,27 @@
             
             <button type="submit" class="button">Register My Interest</button>
             
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" role="status" aria-live="polite">
                 ✓ Thank you for registering! We'll be in touch soon.
             </div>
-            <div class="error-message" id="errorMessage">
+            <div class="error-message" id="errorMessage" role="alert" aria-live="assertive">
                 ✗ Please fill in all required fields correctly.
             </div>
         </form>
     </div>
     
     <script>
+        // Configuration
+        const CONFIG = {
+            GOOGLE_SHEET_ENDPOINT: 'https://script.google.com/macros/s/AKfycbw0SKhirnTtCgnLcpHapO96MSQdpG9zl8WrYsvlzUgus3PeJJ8MaOAl5fq2gp_SQiek/exec',
+            SUBMISSION_TIMEOUT_MS: 5000
+        };
+        
+        // Helper function to display success messages
+        function showSuccessMessage() {
+            document.getElementById('successMessage').style.display = 'block';
+        }
+        
         // Helper function to display error messages
         function showErrorMessage(message) {
             document.getElementById('errorMessage').textContent = message;
@@ -253,7 +264,6 @@
             // Send data to Google Sheets web app
             // Note: The endpoint URL is publicly exposed in client-side code (standard for public forms)
             // The Google Apps Script should implement server-side validation and rate limiting
-            const googleSheetEndpoint = 'https://script.google.com/macros/s/AKfycbw0SKhirnTtCgnLcpHapO96MSQdpG9zl8WrYsvlzUgus3PeJJ8MaOAl5fq2gp_SQiek/exec';
             
             // Prepare data to send
             const formData = new FormData();
@@ -267,9 +277,9 @@
             // Note: Due to CORS restrictions, we cannot verify if the request succeeded
             // We use a timeout to detect network failures, but cannot confirm success
             const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+            const timeout = setTimeout(() => controller.abort(), CONFIG.SUBMISSION_TIMEOUT_MS);
             
-            fetch(googleSheetEndpoint, {
+            fetch(CONFIG.GOOGLE_SHEET_ENDPOINT, {
                 method: 'POST',
                 body: formData,
                 mode: 'no-cors',  // Bypass CORS checks; response will be opaque
@@ -278,7 +288,7 @@
             .then(response => {
                 // Success: The request was sent (CORS opacity prevents verification)
                 clearTimeout(timeout);
-                document.getElementById('successMessage').style.display = 'block';
+                showSuccessMessage();
                 document.getElementById('joinForm').reset();
                 console.log('Submission request sent to Google Sheets');
             })
