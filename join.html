@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Keplar Flow - Early Adopter Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .benefits {
+            text-align: left;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+        
+        .benefits h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .benefit-item {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .benefit-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .benefit-item strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .button:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Join Keplar Flow</h1>
+        <p class="subtitle">
+            Register your interest to join our exclusive inner circle and get early access to transformative AI solutions, community tools, and strategic partnerships.
+        </p>
+        
+        <div class="benefits">
+            <h3>Why Join the Inner Circle?</h3>
+            <div class="benefit-item">
+                <strong>🛠️ Early Access to Liluts</strong>
+                Get first dibs on our open-source "Little Useful Things" community tools designed to eliminate daily operational toil.
+            </div>
+            <div class="benefit-item">
+                <strong>🧪 Beta Invitations</strong>
+                Be the first to test and deploy our emerging Agentic AI business ecosystems and scalable SaaS offerings.
+            </div>
+            <div class="benefit-item">
+                <strong>📈 Strategic Insights</strong>
+                Receive targeted, high-value updates on how we are leveraging Industry 5.0 to scale businesses frugally and effectively (FinOps).
+            </div>
+            <div class="benefit-item">
+                <strong>🤝 Network Onboarding</strong>
+                Gain prioritized invitations to our exclusive Discord channels and professional networking hubs once they go live.
+            </div>
+        </div>
+        
+        <form id="joinForm">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="company">Company/Organization</label>
+                <input type="text" id="company" name="company">
+            </div>
+            
+            <div class="form-group">
+                <label for="interest">What interests you most about Keplar Flow? *</label>
+                <textarea id="interest" name="interest" required></textarea>
+            </div>
+            
+            <button type="submit" class="button">Register My Interest</button>
+            
+            <div class="success-message" id="successMessage">
+                ✓ Thank you for registering! We'll be in touch soon.
+            </div>
+            <div class="error-message" id="errorMessage">
+                ✗ Please fill in all required fields correctly.
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('joinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const interest = document.getElementById('interest').value.trim();
+            const emailInput = document.getElementById('email');
+            
+            // Clear previous messages
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Validate using HTML5 email validation via the input element
+            if (!name || !email || !interest || !emailInput.checkValidity()) {
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Log for monitoring purposes (can be connected to analytics service)
+            console.log('Early adopter registration submission:', { 
+                name, 
+                email, 
+                interest,
+                timestamp: new Date().toISOString()
+            });
+        });
+    </script>
+</body>
+</html>
