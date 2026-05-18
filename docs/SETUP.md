@@ -1,6 +1,6 @@
 # Early Adopter Form Setup Guide
 
-This directory contains the Early Adopter registration form hosted on GitHub Pages.
+This directory contains the Keplar Flow landing page and Early Adopter registration form hosted on GitHub Pages.
 
 ## Configuration
 
@@ -61,15 +61,22 @@ function doPost(e) {
 
 ## GitHub Pages Hosting
 
-The form is automatically hosted on GitHub Pages at:
+The content is automatically hosted on GitHub Pages at:
 ```
-https://keplar-flow-ltd.github.io/.github/
+https://keplar-flow-ltd.github.io/.github/         (landing)
+https://keplar-flow-ltd.github.io/.github/form/    (form)
 ```
 
 The GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) automatically:
 1. Reads the `GOOGLE_APPS_SCRIPT_URL` secret from repository settings
-2. Injects it into the form HTML
+2. Injects it into `docs/form/index.html`
 3. Deploys to GitHub Pages on every push to main
+
+## Custom Domains
+
+- Apex landing domain: `keplarflow.org` (configured via `docs/CNAME`)
+- Recommended `www` behavior: redirect or CNAME to the apex domain
+- Recommended form behavior: point `form.keplarflow.org` to the form route (`/form/`) using DNS URL redirect or a dedicated Pages site for that subdomain
 
 ## Testing
 
