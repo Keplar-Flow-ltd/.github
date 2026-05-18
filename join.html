@@ -142,6 +142,7 @@
             border-radius: 6px;
             margin-top: 20px;
             text-align: center;
+            font-size: 0.95em;
         }
         
         .error-message {
@@ -205,21 +206,41 @@
             
             <button type="submit" class="button">Register My Interest</button>
             
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" role="status" aria-live="polite">
                 ✓ Thank you for registering! We'll be in touch soon.
             </div>
-            <div class="error-message" id="errorMessage">
+            <div class="error-message" id="errorMessage" role="alert" aria-live="assertive">
                 ✗ Please fill in all required fields correctly.
             </div>
         </form>
     </div>
     
     <script>
+        // Configuration
+        const CONFIG = {
+            GOOGLE_SHEET_ENDPOINT: 'https://script.google.com/macros/s/AKfycbw0SKhirnTtCgnLcpHapO96MSQdpG9zl8WrYsvlzUgus3PeJJ8MaOAl5fq2gp_SQiek/exec',
+            SUBMISSION_TIMEOUT_MS: 5000
+        };
+        
+        // Helper function to display success messages
+        function showSuccessMessage() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        }
+        
+        // Helper function to display error messages
+        function showErrorMessage(message) {
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+        
         document.getElementById('joinForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
+            const company = document.getElementById('company').value.trim();
             const interest = document.getElementById('interest').value.trim();
             const emailInput = document.getElementById('email');
             
@@ -229,22 +250,60 @@
             
             // Validate using HTML5 email validation via the input element
             if (!name || !email || !interest || !emailInput.checkValidity()) {
-                document.getElementById('errorMessage').style.display = 'block';
+                showErrorMessage('✗ Please fill in all required fields correctly.');
                 return;
             }
-            
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Reset form
-            this.reset();
             
             // Log for monitoring purposes (can be connected to analytics service)
             console.log('Early adopter registration submission:', { 
                 name, 
-                email, 
+                email,
+                company,
                 interest,
                 timestamp: new Date().toISOString()
+            });
+            
+            // Send data to Google Sheets web app
+            // Note: The endpoint URL is publicly exposed in client-side code (standard for public forms)
+            // The Google Apps Script should implement server-side validation and rate limiting
+            
+            // Prepare data to send
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('company', company);
+            formData.append('interest', interest);
+            formData.append('timestamp', new Date().toISOString());
+            
+            // Send POST request to Google Sheets
+            // Note: Due to CORS restrictions, we cannot verify if the request succeeded
+            // We use a timeout to detect network failures, but cannot confirm success
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), CONFIG.SUBMISSION_TIMEOUT_MS);
+            
+            fetch(CONFIG.GOOGLE_SHEET_ENDPOINT, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors',  // Bypass CORS checks; response will be opaque
+                signal: controller.signal
+            })
+            .then(response => {
+                // Success: The request was sent (CORS opacity prevents verification)
+                clearTimeout(timeout);
+                showSuccessMessage();
+                document.getElementById('joinForm').reset();
+                console.log('Submission request sent to Google Sheets');
+            })
+            .catch(error => {
+                clearTimeout(timeout);
+                // Error: Request failed (timeout or network error)
+                if (error.name === 'AbortError') {
+                    showErrorMessage('✗ Connection timeout. Please check your internet and try again.');
+                    console.log('Request timeout: Network may be slow or endpoint unavailable');
+                } else {
+                    showErrorMessage('✗ Network error. Please try again.');
+                    console.log('Network error:', error.message);
+                }
             });
         });
     </script>
