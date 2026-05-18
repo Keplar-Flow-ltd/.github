@@ -75,8 +75,9 @@ The GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) automatically
 ## Custom Domains
 
 - Apex landing domain: `keplarflow.org` (configured via `docs/CNAME`)
-- Recommended `www` behavior: redirect or CNAME to the apex domain
-- Recommended form behavior: point `form.keplarflow.org` to the form route (`/form/`) using DNS URL redirect or a dedicated Pages site for that subdomain
+- Recommended `www` behavior: CNAME `www` to `keplar-flow-ltd.github.io` (GitHub will serve/redirect for the configured custom domain)
+- Preferred `form.keplarflow.org` behavior: host it as a dedicated GitHub Pages site/repository if you need that exact hostname to remain in the browser with HTTPS.
+- Transitional option for `form.keplarflow.org`: configure a URL redirect to `https://keplarflow.org/form/` if you do not need the `form.` hostname to stay visible after navigation.
 
 ## Testing
 
