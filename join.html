@@ -216,6 +216,12 @@
     </div>
     
     <script>
+        // Helper function to display error messages
+        function showErrorMessage(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+        
         document.getElementById('joinForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -231,7 +237,7 @@
             
             // Validate using HTML5 email validation via the input element
             if (!name || !email || !interest || !emailInput.checkValidity()) {
-                document.getElementById('errorMessage').style.display = 'block';
+                showErrorMessage('✗ Please fill in all required fields correctly.');
                 return;
             }
             
@@ -245,8 +251,8 @@
             });
             
             // Send data to Google Sheets web app
-            // Note: The endpoint URL is publicly exposed in client-side code (common for public forms)
-            // The Google Apps Script should implement validation and rate limiting on the server side
+            // Note: The endpoint URL is publicly exposed in client-side code (standard for public forms)
+            // The Google Apps Script should implement server-side validation and rate limiting
             const googleSheetEndpoint = 'https://script.google.com/macros/s/AKfycbw0SKhirnTtCgnLcpHapO96MSQdpG9zl8WrYsvlzUgus3PeJJ8MaOAl5fq2gp_SQiek/exec';
             
             // Prepare data to send
@@ -258,36 +264,33 @@
             formData.append('timestamp', new Date().toISOString());
             
             // Send POST request to Google Sheets
-            // Using no-cors mode to bypass CORS restrictions (bypasses checks but returns opaque response)
+            // Note: Due to CORS restrictions, we cannot verify if the request succeeded
+            // We use a timeout to detect network failures, but cannot confirm success
             const controller = new AbortController();
             const timeout = setTimeout(() => controller.abort(), 5000); // 5 second timeout
             
             fetch(googleSheetEndpoint, {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors',  // Bypass CORS checks; response will be opaque and unreadable
+                mode: 'no-cors',  // Bypass CORS checks; response will be opaque
                 signal: controller.signal
             })
             .then(response => {
-                // With no-cors mode, we always get an opaque response
-                // The data was successfully sent
+                // Success: The request was sent (CORS opacity prevents verification)
                 clearTimeout(timeout);
                 document.getElementById('successMessage').style.display = 'block';
                 document.getElementById('joinForm').reset();
-                console.log('Data successfully submitted to Google Sheets');
+                console.log('Submission request sent to Google Sheets');
             })
             .catch(error => {
                 clearTimeout(timeout);
-                // Check if this was a timeout
+                // Error: Request failed (timeout or network error)
                 if (error.name === 'AbortError') {
+                    showErrorMessage('✗ Connection timeout. Please check your internet and try again.');
                     console.log('Request timeout: Network may be slow or endpoint unavailable');
-                    document.getElementById('errorMessage').textContent = '✗ Connection timeout. Please check your internet and try again.';
-                    document.getElementById('errorMessage').style.display = 'block';
                 } else {
-                    // Network error or other failure
+                    showErrorMessage('✗ Network error. Please try again.');
                     console.log('Network error:', error.message);
-                    document.getElementById('errorMessage').textContent = '✗ Network error. Please try again.';
-                    document.getElementById('errorMessage').style.display = 'block';
                 }
             });
         });
