@@ -221,15 +221,14 @@
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const interest = document.getElementById('interest').value.trim();
+            const emailInput = document.getElementById('email');
             
             // Clear previous messages
             document.getElementById('successMessage').style.display = 'none';
             document.getElementById('errorMessage').style.display = 'none';
             
-            // Validate email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (!name || !email || !interest || !emailRegex.test(email)) {
+            // Validate using HTML5 email validation via the input element
+            if (!name || !email || !interest || !emailInput.checkValidity()) {
                 document.getElementById('errorMessage').style.display = 'block';
                 return;
             }
@@ -240,8 +239,13 @@
             // Reset form
             this.reset();
             
-            // In a real scenario, you would send this data to a server
-            console.log('Form submitted:', { name, email, interest });
+            // Log for monitoring purposes (can be connected to analytics service)
+            console.log('Early adopter registration submission:', { 
+                name, 
+                email, 
+                interest,
+                timestamp: new Date().toISOString()
+            });
         });
     </script>
 </body>
