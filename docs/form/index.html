@@ -132,23 +132,39 @@
         </section>
         <button type="button" class="button" id="openFormBtn">Open Memo Request Form</button>
         <div class="success-message" id="successMessage" role="alert" aria-live="polite">✓ Form link opened in a new tab.</div>
-        <div class="error-message" id="errorMessage" role="alert" aria-live="polite">✗ Google Form URL is not configured yet.</div>
+        <div class="error-message" id="errorMessage" role="alert" aria-live="polite">✗ Unable to open the memo request form right now.</div>
         <p class="tiny-note">Need help? If the form does not open, contact Keplar Flow support.</p>
     </div>
 
     <script>
         const GOOGLE_FORM_URL = "{{GOOGLE_FORM_URL}}";
+        // Public memo-request form link used when deploy-time secret injection is not configured.
+        const FALLBACK_GOOGLE_FORM_URL = "https://forms.gle/TBRd9i87M7KhuRbe6";
+
+        function isValidHttpsUrl(value) {
+            try {
+                const parsed = new URL(value);
+                return parsed.protocol === "https:";
+            } catch {
+                return false;
+            }
+        }
 
         document.getElementById("openFormBtn").addEventListener("click", function () {
             document.getElementById("successMessage").style.display = "none";
             document.getElementById("errorMessage").style.display = "none";
 
-            if (!GOOGLE_FORM_URL || GOOGLE_FORM_URL === "{{GOOGLE_FORM_URL}}") {
+            const shouldUseFallback = !isValidHttpsUrl(GOOGLE_FORM_URL);
+            const targetFormUrl = shouldUseFallback
+                ? FALLBACK_GOOGLE_FORM_URL
+                : GOOGLE_FORM_URL;
+
+            if (!isValidHttpsUrl(targetFormUrl)) {
                 document.getElementById("errorMessage").style.display = "block";
                 return;
             }
 
-            window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+            window.open(targetFormUrl, "_blank", "noopener,noreferrer");
             document.getElementById("successMessage").style.display = "block";
         });
     </script>
