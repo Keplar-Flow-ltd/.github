@@ -1,57 +1,30 @@
-# Early Adopter Form Setup Guide
+# Decent Work Memo Flow Setup Guide
 
-This directory contains the Keplar Flow landing page and Early Adopter registration form hosted on GitHub Pages.
+This directory contains the Keplar Flow landing page and Decent Work memo request flow hosted on GitHub Pages.
 
 ## Configuration
 
-The form is designed to post data to a Google Apps Script web app that connects to a Google Sheet.
+The flow is designed to send users from the landing page to a Google Form before they can access the memo PDF.
 
 ### Setup Instructions
 
-1. **Create a Google Sheet**
-   - Create a new Google Sheet to store registrations
-   - Add column headers: Name, Email, Company, Interest, Timestamp
+1. **Create a Google Form**
+   - Include fields you need for memo requests (recommended: Full Name, Email, Organization, Role, Country, Use Case, Consent).
+   - In Form settings, enable "Collect email addresses".
 
-2. **Create a Google Apps Script**
-   - Open your Google Sheet
-   - Go to Extensions > Apps Script
-   - Replace the default code with the following:
+2. **Configure post-submit memo access**
+   - In Form settings, add a confirmation message with a direct link to the memo PDF, for example:
+     `Thanks. Download the Decent Work Memo here: https://your-domain/path/decent-work-memo.pdf`
+   - Optional: enable "Send responders a copy of their response" so the link is also delivered to email.
 
-```javascript
-function doPost(e) {
-  try {
-    const sheet = SpreadsheetApp.getActiveSheet();
-    const data = e.parameter;
-    
-    sheet.appendRow([
-      data.name || '',
-      data.email || '',
-      data.company || '',
-      data.interest || '',
-      data.timestamp || new Date().toISOString()
-    ]);
-    
-    return ContentService.createTextOutput('Success');
-  } catch(error) {
-    Logger.log(error);
-    return ContentService.createTextOutput('Error: ' + error.toString());
-  }
-}
-```
+3. **Publish and copy the Google Form URL**
+   - Click "Send" in Google Forms and copy the public form link.
 
-3. **Deploy as Web App**
-   - Click "Deploy" > "New deployment"
-   - Select type: "Web app"
-   - Execute as: (your email)
-   - Who has access: "Anyone"
-   - Click "Deploy"
-   - Copy the deployment URL
-
-4. **Add the URL as a Repository Secret**
+4. **Add the Form URL as a Repository Secret**
    - Go to Repository Settings > Secrets and variables > Actions
    - Click "New repository secret"
-   - Name: `GOOGLE_APPS_SCRIPT_URL`
-   - Value: Paste your Google Apps Script deployment URL
+   - Name: `GOOGLE_FORM_URL`
+   - Value: Paste your Google Form public URL
    - Click "Add secret"
 
 5. **Enable GitHub Pages**
@@ -68,7 +41,7 @@ https://keplar-flow-ltd.github.io/.github/form/    (form)
 ```
 
 The GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) automatically:
-1. Reads the `GOOGLE_APPS_SCRIPT_URL` secret from repository settings
+1. Reads the `GOOGLE_FORM_URL` secret from repository settings
 2. Injects it into `docs/form/index.html`
 3. Deploys to GitHub Pages on every push to main
 
@@ -81,12 +54,13 @@ The GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) automatically
 
 ## Testing
 
-1. Visit the form URL
-2. Fill out the form with test data
-3. Submit and verify the data appears in your Google Sheet
+1. Visit the landing URL
+2. Click **Download the Decent Work Memo**
+3. Confirm the Google Form opens
+4. Submit a test response and verify the memo link appears in the confirmation step
 
 ## Troubleshooting
 
-- **Form submission fails**: Verify the Google Apps Script URL is correct
-- **Data not appearing**: Check Google Apps Script logs for errors
-- **CORS issues**: Google Apps Script requires `mode: 'no-cors'` in the fetch request
+- **Form does not open**: Verify the `GOOGLE_FORM_URL` secret is set correctly
+- **No memo link after submit**: Recheck the Google Form confirmation message
+- **No email copy**: Recheck Form settings for response receipt/email copy

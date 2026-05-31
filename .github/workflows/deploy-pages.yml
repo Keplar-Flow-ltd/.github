@@ -27,16 +27,16 @@ jobs:
         with:
           enablement: true
 
-      - name: Inject Google Apps Script URL
+      - name: Inject Google Form URL
         env:
-          GOOGLE_APPS_SCRIPT_URL: ${{ secrets.GOOGLE_APPS_SCRIPT_URL }}
+          GOOGLE_FORM_URL: ${{ secrets.GOOGLE_FORM_URL }}
         run: |
-          if [ -z "$GOOGLE_APPS_SCRIPT_URL" ]; then
-            echo "Warning: GOOGLE_APPS_SCRIPT_URL secret is not set. Using placeholder."
+          if [ -z "$GOOGLE_FORM_URL" ]; then
+            echo "Warning: GOOGLE_FORM_URL secret is not set. Using placeholder."
             exit 0
           fi
-          escaped_url=$(printf '%s\n' "$GOOGLE_APPS_SCRIPT_URL" | sed -e 's/[\/&|]/\\&/g')
-          sed -i "s|{{GOOGLE_APPS_SCRIPT_URL}}|$escaped_url|g" docs/form/index.html
+          escaped_url=$(printf '%s\n' "$GOOGLE_FORM_URL" | sed -e 's/[\/&|]/\\&/g')
+          sed -i "s|{{GOOGLE_FORM_URL}}|$escaped_url|g" docs/form/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

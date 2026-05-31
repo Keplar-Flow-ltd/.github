@@ -2,9 +2,9 @@
 
 Welcome to **Keplar Flow Limited** - Building transformative AI solutions for the future.
 
-## 🚀 Join Our Inner Circle
+## 🤝 Decent Work Initiative
 
-Interested in getting early access to our AI solutions, community tools, and strategic partnerships?
+Explore our Decent Work Initiative and request the memo through our guided form flow.
 
 **[📝 Visit the Keplar Flow Landing Page](https://keplarflow.org/)**
 
@@ -21,7 +21,7 @@ We are focused on:
 ## Getting Started
 
 - Visit our [Landing Page](https://keplarflow.org/)
-- Register via [Early Adopter Form](https://form.keplarflow.org/)
+- Request the memo via the form CTA on the landing page
 - Check out our repositories for community tools and projects
 - Connect with us on our Discord channels once they go live
 
