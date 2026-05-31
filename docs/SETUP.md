@@ -13,6 +13,7 @@ The flow is designed to send users from the landing page to a Google Form before
    - In Form settings, enable "Collect email addresses".
 
 2. **Configure post-submit memo access**
+   - Host your memo PDF at a stable HTTPS URL (for example in GitHub Pages under `docs/assets/decent-work-memo.pdf`).
    - In Form settings, add a confirmation message with a direct link to the memo PDF, for example:
      `Thanks. Download the Decent Work Memo here: https://your-domain/path/decent-work-memo.pdf`
    - Optional: enable "Send responders a copy of their response" so the link is also delivered to email.

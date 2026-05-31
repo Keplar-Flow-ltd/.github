@@ -137,7 +137,7 @@
     </div>
 
     <script>
-        const GOOGLE_FORM_URL = "{{GOOGLE_FORM_URL}}";
+        const INJECTED_GOOGLE_FORM_URL = "{{GOOGLE_FORM_URL}}";
         // Public memo-request form link used when deploy-time secret injection is not configured.
         const FALLBACK_GOOGLE_FORM_URL = "https://forms.gle/TBRd9i87M7KhuRbe6";
 
@@ -154,15 +154,17 @@
             document.getElementById("successMessage").style.display = "none";
             document.getElementById("errorMessage").style.display = "none";
 
-            const shouldUseFallback = !isValidHttpsUrl(GOOGLE_FORM_URL);
-            const targetFormUrl = shouldUseFallback
-                ? FALLBACK_GOOGLE_FORM_URL
-                : GOOGLE_FORM_URL;
+            const hasValidInjectedUrl = isValidHttpsUrl(INJECTED_GOOGLE_FORM_URL);
+            const hasValidFallbackUrl = isValidHttpsUrl(FALLBACK_GOOGLE_FORM_URL);
 
-            if (!isValidHttpsUrl(targetFormUrl)) {
+            if (!hasValidInjectedUrl && !hasValidFallbackUrl) {
                 document.getElementById("errorMessage").style.display = "block";
                 return;
             }
+
+            const targetFormUrl = hasValidInjectedUrl
+                ? INJECTED_GOOGLE_FORM_URL
+                : FALLBACK_GOOGLE_FORM_URL;
 
             window.open(targetFormUrl, "_blank", "noopener,noreferrer");
             document.getElementById("successMessage").style.display = "block";
