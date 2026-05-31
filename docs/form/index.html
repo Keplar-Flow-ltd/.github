@@ -137,18 +137,18 @@
     </div>
 
     <script>
-        const googleFormUrl = "{{GOOGLE_FORM_URL}}";
+        const GOOGLE_FORM_URL = "{{GOOGLE_FORM_URL}}";
 
         document.getElementById("openFormBtn").addEventListener("click", function () {
             document.getElementById("successMessage").style.display = "none";
             document.getElementById("errorMessage").style.display = "none";
 
-            if (!googleFormUrl || googleFormUrl === "{{GOOGLE_FORM_URL}}") {
+            if (!GOOGLE_FORM_URL || GOOGLE_FORM_URL === "{{GOOGLE_FORM_URL}}") {
                 document.getElementById("errorMessage").style.display = "block";
                 return;
             }
 
-            window.open(googleFormUrl, "_blank", "noopener,noreferrer");
+            window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
             document.getElementById("successMessage").style.display = "block";
         });
     </script>
