@@ -166,7 +166,18 @@
                 ? INJECTED_GOOGLE_FORM_URL
                 : FALLBACK_GOOGLE_FORM_URL;
 
-            window.open(targetFormUrl, "_blank", "noopener,noreferrer");
+            const openedWindow = window.open(targetFormUrl, "_blank", "noopener,noreferrer");
+            if (!openedWindow) {
+                document.getElementById("errorMessage").style.display = "block";
+                return;
+            }
+
+            try {
+                openedWindow.opener = null;
+            } catch {
+                // Ignore cross-browser differences.
+            }
+
             document.getElementById("successMessage").style.display = "block";
         });
     </script>
