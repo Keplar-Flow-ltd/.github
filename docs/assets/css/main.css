@@ -221,3 +221,11 @@ footer.site .base{margin-top:44px;padding-top:22px;border-top:1px solid var(--li
   .memo{padding:26px 22px}
   .contact{padding:80px 0 90px}
 }
+
+/* a11y + reduced-motion polish (2026-10-14) */
+:focus-visible{outline:2px solid #7C95FF;outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){
+  .rv,.rv.in{opacity:1!important;transform:none!important;transition:none!important}
+  .strip .track{animation:none!important}
+  html{scroll-behavior:auto}
+}
