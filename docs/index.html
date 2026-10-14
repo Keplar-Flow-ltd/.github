@@ -1,102 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keplar Flow - Decent Work Initiative</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #1f2937;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 760px;
-            width: 100%;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-            padding: 56px 40px;
-            text-align: center;
-        }
-        h1 {
-            color: #667eea;
-            font-size: 2.4rem;
-            margin-bottom: 12px;
-        }
-        .subtitle {
-            color: #4b5563;
-            margin-bottom: 32px;
-        }
-        .focus {
-            text-align: left;
-            background: #f8fafc;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 28px;
-        }
-        .focus h2 {
-            color: #4f46e5;
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-        }
-        .focus ul {
-            padding-left: 20px;
-        }
-        .focus li {
-            margin-bottom: 8px;
-        }
-        .lead {
-            margin-bottom: 20px;
-            text-align: left;
-            color: #374151;
-        }
-        .cta {
-            display: inline-block;
-            text-decoration: none;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            font-weight: 600;
-            padding: 14px 28px;
-            border-radius: 8px;
-        }
-        .helper {
-            margin-top: 14px;
-            color: #6b7280;
-            font-size: 0.92rem;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keplar Flow Limited — Tech-Driven Innovation, Human by Design</title>
+<meta name="description" content="Keplar Flow Limited builds AI, DevOps and product engineering for institutions that serve everyone — including ZiVA Access, accessible banking on WhatsApp.">
+<meta property="og:title" content="Keplar Flow Limited">
+<meta property="og:description" content="AI · DevOps · Product Engineering · Accessible Technology. Creators of ZiVA Access.">
+<meta property="og:image" content="https://keplarflow.org/assets/og-image-1200x630.png">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32">
+<link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/icons/favicon-180.png">
+<style>
+@font-face { font-family:'Montserrat'; src:url('/assets/fonts/Montserrat-VF.woff2') format('woff2-variations'); font-weight:100 900; font-display:swap; }
+@font-face { font-family:'fixelPont'; src:url('/assets/fonts/fixelPont-regular.woff2') format('woff2'); font-display:swap; }
+:root{
+  --navy1:#16213A; --navy2:#0C1424; --kblue:#194AFF; --ksoft:#7C95FF;
+  --gold:#D4A24C; --off:#F8FAFC; --s300:#CBD5E1; --s400:#94A3B8; --line:rgba(124,149,255,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',system-ui,sans-serif;font-weight:450;line-height:1.6;
+  color:var(--off); background:linear-gradient(160deg,var(--navy1),var(--navy2)) fixed;
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(124,149,255,.06) 1.2px,transparent 1.2px);background-size:26px 26px}
+main,header,footer{position:relative;z-index:1}
+.band{height:5px;background:linear-gradient(90deg,var(--kblue) 0%,var(--gold) 55%,var(--navy2) 100%)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+header{padding:22px 0;position:sticky;top:0;backdrop-filter:blur(10px);
+  background:rgba(12,20,36,.72);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:16px}
+header img{height:26px}
+header .tag{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--s400);margin-left:auto}
+
+.hero{padding:96px 0 84px}
+.kicker{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ksoft);margin-bottom:14px}
+h1{font-size:clamp(2rem,5.4vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.12;max-width:19ch}
+h1 .gold{color:var(--gold)}
+.hero p.sub{margin:22px 0 0;font-size:1.02rem;color:var(--s300);max-width:56ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--s300);
+  border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+
+section{padding:56px 0}
+h2{font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ksoft);margin-bottom:26px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:9px;height:9px;background:var(--kblue);border-radius:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:rgba(19,28,48,.72);border:1px solid var(--line);border-radius:14px;padding:22px 20px}
+.card h3{font-size:1rem;font-weight:700;color:var(--off);margin-bottom:8px}
+.card p{font-size:.85rem;color:var(--s300)}
+
+.flagship{background:rgba(19,28,48,.72);border:1px solid var(--line);border-radius:18px;padding:40px 36px;
+  display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+.flagship .name{font-family:'fixelPont';font-size:clamp(2.2rem,4.6vw,3.4rem);color:var(--gold);line-height:1.05}
+.flagship p{margin-top:14px;font-size:.95rem;color:var(--s300);max-width:52ch}
+.flagship .status{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ksoft);
+  border:1px solid var(--ksoft);border-radius:999px;padding:5px 14px;white-space:nowrap}
+@media(max-width:760px){.flagship{grid-template-columns:1fr}}
+
+.contact{padding:56px 0 72px}
+.contact a.big{display:inline-block;margin-top:10px;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;
+  color:var(--off);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:4px}
+.contact a.big:hover{color:var(--gold)}
+footer{border-top:1px solid var(--line);padding:26px 0 34px;font-size:.72rem;color:var(--s400)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+</style>
 </head>
 <body>
-    <main class="container">
-        <h1>🤝 Decent Work Initiative</h1>
-        <p class="subtitle">A practical commitment to fair, sustainable, and human-centered work systems.</p>
-        <p class="lead">
-            Keplar Flow is driving a Decent Work agenda that helps founders, workers, and institutions align on dignity,
-            productivity, equity, and long-term resilience in modern workplaces.
-        </p>
-        <section class="focus" aria-labelledby="focus-title">
-            <h2 id="focus-title">What this initiative covers</h2>
-            <ul>
-                <li>Clear principles for dignified and inclusive work design.</li>
-                <li>Responsible technology adoption across teams and communities.</li>
-                <li>Actionable standards for fair opportunities and outcomes.</li>
-                <li>Practical pathways for organizations ready to implement now.</li>
-            </ul>
-        </section>
-        <a class="cta" href="./form/" role="button" aria-label="Access the Decent Work memo form">Download the Decent Work Memo</a>
-        <p class="helper">You will be asked to complete a short form before accessing the memo PDF.</p>
-    </main>
+<div class="band"></div>
+<header><div class="wrap">
+  <img src="/assets/logos/Horizontal Logo - Primary White.svg" alt="Keplar Flow Limited">
+  <span class="tag">Tech-Driven Innovation, Human by Design</span>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">Keplar Flow Limited</div>
+    <h1>We build the technology that <span class="gold">serves everyone</span> — including the people everyone else forgets.</h1>
+    <p class="sub">An engineering firm delivering AI, DevOps and product builds for institutions — with accessible technology as a first-class discipline, not an afterthought.</p>
+    <div class="chips">
+      <span class="chip">AI Engineering</span><span class="chip">DevOps &amp; Cloud</span>
+      <span class="chip">Product Delivery</span><span class="chip">Accessible Technology</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>What we do</h2>
+    <div class="grid">
+      <div class="card"><h3>AI Engineering</h3><p>Conversational assistants, document intelligence and automation — built on models that understand Nigerian languages and accents.</p></div>
+      <div class="card"><h3>DevOps &amp; Cloud</h3><p>CI/CD pipelines, self-hosted runner infrastructure and hardened delivery — proven by adversarial testing before anything ships.</p></div>
+      <div class="card"><h3>Product Delivery</h3><p>Discovery, build and handover with audit-grade documentation. We engineer, then we make your team self-sufficient.</p></div>
+      <div class="card"><h3>Accessible Technology</h3><p>Voice, sign-language and hands-free interfaces — inclusion engineered in from the first commit.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="flagship">
+      <div>
+        <div class="kicker" style="margin-bottom:10px">Flagship build</div>
+        <div class="name">ZiVA Access</div>
+        <p>Accessible banking on WhatsApp — voice, Nigerian Sign Language and hands-free modes on the assistant millions already use. In competition at Zenith Bank's Zecathon 6.0.</p>
+      </div>
+      <span class="status">In build · Lagos</span>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Work with us</h2>
+    <p style="color:var(--s300);max-width:52ch">Audits, builds and partnerships — if your institution serves people, we should talk.</p>
+    <a class="big" href="mailto:hello@keplarflow.org">hello@keplarflow.org</a>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Keplar Flow Limited. All rights reserved.</span>
+  <span>keplarflow.org</span>
+</div></footer>
 </body>
 </html>
