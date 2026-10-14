@@ -1,185 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access the Decent Work Memo</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            width: 100%;
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 14px 40px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .button:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .error-message {
-            display: none;
-            background: #f8d7da;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .instructions {
-            text-align: left;
-            margin-bottom: 28px;
-            background: #f8fafc;
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .instructions h2 {
-            color: #4f46e5;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .instructions ul {
-            padding-left: 20px;
-        }
-
-        .instructions li {
-            margin-bottom: 8px;
-        }
-
-        .tiny-note {
-            margin-top: 10px;
-            color: #6b7280;
-            font-size: 0.92rem;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Access the Decent Work memo | Keplar Flow</title>
+<meta name="description" content="Request the Keplar Flow Decent Work memo: complete a short form, then access the memo PDF.">
+<meta name="theme-color" content="#010814">
+<link rel="icon" href="../assets/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="512x512" href="../assets/img/favicon-512.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+  .memo-wrap{min-height:calc(100vh - 70px);display:flex;align-items:center;justify-content:center;padding:84px 20px 48px}
+  .memo-card{width:100%;max-width:560px;background:linear-gradient(155deg, rgba(25,74,255,.14), rgba(25,74,255,.02) 55%), var(--bg-3);border:1px solid var(--line-strong);border-radius:22px;padding:46px 42px 40px;box-shadow:0 30px 90px rgba(0,0,0,.5);position:relative;overflow:hidden}
+  .memo-card .corner{position:absolute;top:18px;right:18px;width:92px;height:92px;opacity:.45;transform:scaleX(-1);pointer-events:none}
+  .memo-card .corner img{width:100%}
+  .memo-card h1{font-size:29px;font-weight:760;letter-spacing:-.01em;color:#fff;margin-top:14px;line-height:1.2}
+  .memo-card .sub{margin-top:12px;font-size:15px;color:var(--ink-soft);max-width:46ch}
+  .memo-steps{margin-top:26px;display:flex;flex-direction:column;gap:1px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .memo-steps .st{display:flex;gap:14px;align-items:baseline;background:rgba(1,8,20,.35);padding:15px 18px;font-size:14.5px;color:var(--ink-soft)}
+  .memo-steps .st b{font-family:var(--f);font-size:12.5px;font-weight:700;color:var(--accent-lite);min-width:26px;letter-spacing:.04em}
+  .memo-card .btn{margin-top:26px;width:100%}
+  .msg{display:none;margin-top:16px;padding:13px 16px;border-radius:12px;font-size:14px;font-weight:560}
+  .msg.ok{background:rgba(51,196,129,.12);border:1px solid rgba(51,196,129,.4);color:#84DCB3}
+  .msg.err{background:rgba(214,69,69,.12);border:1px solid rgba(214,69,69,.4);color:#F2A5A5}
+  .tiny{margin-top:16px;font-size:13px;color:var(--muted)}
+  .tiny a{color:var(--accent-lite);font-weight:620;border-bottom:1px solid #7FB2FF;padding-bottom:1px}
+  .tiny a:hover{color:#fff}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>📄 Get the Decent Work Memo</h1>
-        <p class="subtitle">Please complete a short Google Form first. After submission, your memo access will be provided.</p>
-        <section class="instructions" aria-labelledby="how-it-works-title">
-            <h2 id="how-it-works-title">How it works</h2>
-            <ul>
-                <li>Click the button below to open the official Decent Work memo request form.</li>
-                <li>Complete and submit the form.</li>
-                <li>Use the post-submit instruction in the form to access the memo PDF.</li>
-            </ul>
-        </section>
-        <button type="button" class="button" id="openFormBtn">Open Memo Request Form</button>
-        <div class="success-message" id="successMessage" role="alert" aria-live="polite">✓ Form link opened in a new tab.</div>
-        <div class="error-message" id="errorMessage" role="alert" aria-live="polite">✗ Unable to open the memo request form right now.</div>
-        <p class="tiny-note">Need help? If the form does not open, contact Keplar Flow support.</p>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topnav" id="topnav">
+  <div class="bar">
+    <a class="brand" href="../index.html" aria-label="Keplar Flow home">
+      <img src="../assets/img/logo-primary-white.svg" alt="Keplar Flow">
+    </a>
+    <a class="btn btn-ghost" href="../index.html" style="font-size:14px;padding:10px 18px">Back to home</a>
+  </div>
+</header>
+
+<main id="main" class="memo-wrap">
+  <div class="memo-card">
+    <div class="corner" aria-hidden="true"><img src="../assets/img/flow-dither-corner.svg" alt=""></div>
+    <div class="kicker">Decent Work Initiative</div>
+    <h1>Access the Decent Work memo</h1>
+    <p class="sub">Please complete a short request form first. After submission, your memo access will be provided.</p>
+    <div class="memo-steps" aria-label="How it works">
+      <div class="st"><b>01</b><span>Open the official memo request form.</span></div>
+      <div class="st"><b>02</b><span>Complete and submit the form.</span></div>
+      <div class="st"><b>03</b><span>Follow the post-submit instructions to access the memo PDF.</span></div>
     </div>
+    <button type="button" class="btn btn-primary" id="openFormBtn">Open memo request form</button>
+    <div class="msg ok" id="successMessage" role="status" aria-live="polite">Form opened in a new tab. Complete it to get your memo access.</div>
+    <div class="msg err" id="errorMessage" role="alert" aria-live="assertive">Unable to open the memo request form right now. Check your connection and try again, or email hello@keplarflow.org.</div>
+    <p class="tiny">Need help? If the form does not open, contact <a href="mailto:hello@keplarflow.org">hello@keplarflow.org</a>.</p>
+  </div>
+</main>
 
-    <script>
-        const INJECTED_GOOGLE_FORM_URL = "{{GOOGLE_FORM_URL}}";
-        // Public memo-request form link used when deploy-time secret injection is not configured.
-        const FALLBACK_GOOGLE_FORM_URL = "https://forms.gle/TBRd9i87M7KhuRbe6";
+<script>
+(function(){
+  var INJECTED_GOOGLE_FORM_URL = "https://forms.gle/TBRd9i87M7KhuRbe6";
+  // Public memo-request form link used when deploy-time secret injection is not configured.
+  var FALLBACK_GOOGLE_FORM_URL = "https://forms.gle/TBRd9i87M7KhuRbe6";
 
-        function isValidHttpsUrl(value) {
-            try {
-                const parsed = new URL(value);
-                return parsed.protocol === "https:";
-            } catch {
-                return false;
-            }
-        }
+  function isValidHttpsUrl(value) {
+    try {
+      var parsed = new URL(value);
+      return parsed.protocol === "https:";
+    } catch (e) {
+      return false;
+    }
+  }
 
-        document.getElementById("openFormBtn").addEventListener("click", function () {
-            document.getElementById("successMessage").style.display = "none";
-            document.getElementById("errorMessage").style.display = "none";
+  var btn = document.getElementById("openFormBtn");
+  var ok = document.getElementById("successMessage");
+  var err = document.getElementById("errorMessage");
+  var label = btn.textContent;
 
-            const hasValidInjectedUrl = isValidHttpsUrl(INJECTED_GOOGLE_FORM_URL);
-            const hasValidFallbackUrl = isValidHttpsUrl(FALLBACK_GOOGLE_FORM_URL);
+  function hideMessages() {
+    ok.style.display = "none";
+    err.style.display = "none";
+  }
 
-            if (!hasValidInjectedUrl && !hasValidFallbackUrl) {
-                document.getElementById("errorMessage").style.display = "block";
-                return;
-            }
+  btn.addEventListener("click", function () {
+    hideMessages();
 
-            const targetFormUrl = hasValidInjectedUrl
-                ? INJECTED_GOOGLE_FORM_URL
-                : FALLBACK_GOOGLE_FORM_URL;
+    var hasValidInjectedUrl = isValidHttpsUrl(INJECTED_GOOGLE_FORM_URL);
+    var hasValidFallbackUrl = isValidHttpsUrl(FALLBACK_GOOGLE_FORM_URL);
 
-            const openedWindow = window.open(targetFormUrl, "_blank", "noopener,noreferrer");
-            if (!openedWindow) {
-                document.getElementById("errorMessage").style.display = "block";
-                return;
-            }
+    if (!hasValidInjectedUrl && !hasValidFallbackUrl) {
+      err.style.display = "block";
+      return;
+    }
 
-            try {
-                openedWindow.opener = null;
-            } catch {
-                // Ignore cross-browser differences.
-            }
+    var targetFormUrl = hasValidInjectedUrl ? INJECTED_GOOGLE_FORM_URL : FALLBACK_GOOGLE_FORM_URL;
 
-            document.getElementById("successMessage").style.display = "block";
-        });
-    </script>
+    btn.disabled = true;
+    btn.textContent = "Opening...";
+
+    var openedWindow = window.open(targetFormUrl, "_blank", "noopener,noreferrer");
+    if (!openedWindow) {
+      btn.disabled = false;
+      btn.textContent = label;
+      err.style.display = "block";
+      return;
+    }
+    try { openedWindow.opener = null; } catch (e) {}
+
+    btn.textContent = "Form opened in a new tab";
+    ok.style.display = "block";
+    setTimeout(function () {
+      btn.disabled = false;
+      btn.textContent = label;
+    }, 3500);
+  });
+})();
+</script>
 </body>
 </html>

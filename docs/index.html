@@ -1,123 +1,258 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Keplar Flow Limited — Tech-Driven Innovation, Human by Design</title>
-<meta name="description" content="Keplar Flow Limited builds AI, DevOps and product engineering for institutions that serve everyone — including ZiVA Access, accessible banking on WhatsApp.">
-<meta property="og:title" content="Keplar Flow Limited">
-<meta property="og:description" content="AI · DevOps · Product Engineering · Accessible Technology. Creators of ZiVA Access.">
-<meta property="og:image" content="https://keplarflow.org/assets/og-image-1200x630.png">
-<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32">
-<link rel="icon" href="/assets/icons/favicon-192.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/assets/icons/favicon-180.png">
-<style>
-@font-face { font-family:'Montserrat'; src:url('/assets/fonts/Montserrat-VF.woff2') format('woff2-variations'); font-weight:100 900; font-display:swap; }
-@font-face { font-family:'fixelPont'; src:url('/assets/fonts/fixelPont-regular.woff2') format('woff2'); font-display:swap; }
-:root{
-  --navy1:#16213A; --navy2:#0C1424; --kblue:#194AFF; --ksoft:#7C95FF;
-  --gold:#D4A24C; --off:#F8FAFC; --s300:#CBD5E1; --s400:#94A3B8; --line:rgba(124,149,255,.16);
+<title>Keplar Flow | Human-centered software for Industry 5.0</title>
+<meta name="description" content="Keplar Flow builds human-centered software and automation for Industry 5.0: platforms, workflow automation, agentic AI, and enablement that scale your business and your people.">
+<meta name="theme-color" content="#010814">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Keplar Flow | Human-centered software for Industry 5.0">
+<meta property="og:description" content="The future isn't smarter machines. It's smarter collaboration. Platforms, automation, and AI that multiply your people.">
+<meta property="og:url" content="https://keplarflow.org/">
+<meta property="og:image" content="https://keplarflow.org/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="assets/css/main.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Keplar Flow Limited",
+  "url": "https://keplarflow.org/",
+  "logo": "https://keplarflow.org/assets/img/logo-primary-white.svg",
+  "email": "hello@keplarflow.org",
+  "telephone": "+234 814 169 3040",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "17 Moses Majekodunmi Crescent, Utako",
+    "addressLocality": "Abuja",
+    "addressCountry": "NG"
+  }
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Montserrat',system-ui,sans-serif;font-weight:450;line-height:1.6;
-  color:var(--off); background:linear-gradient(160deg,var(--navy1),var(--navy2)) fixed;
-}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;
-  background-image:radial-gradient(rgba(124,149,255,.06) 1.2px,transparent 1.2px);background-size:26px 26px}
-main,header,footer{position:relative;z-index:1}
-.band{height:5px;background:linear-gradient(90deg,var(--kblue) 0%,var(--gold) 55%,var(--navy2) 100%)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-
-header{padding:22px 0;position:sticky;top:0;backdrop-filter:blur(10px);
-  background:rgba(12,20,36,.72);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;gap:16px}
-header img{height:26px}
-header .tag{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--s400);margin-left:auto}
-
-.hero{padding:96px 0 84px}
-.kicker{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ksoft);margin-bottom:14px}
-h1{font-size:clamp(2rem,5.4vw,3.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.12;max-width:19ch}
-h1 .gold{color:var(--gold)}
-.hero p.sub{margin:22px 0 0;font-size:1.02rem;color:var(--s300);max-width:56ch}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.chip{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--s300);
-  border:1px solid var(--line);border-radius:999px;padding:6px 14px}
-
-section{padding:56px 0}
-h2{font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ksoft);margin-bottom:26px;display:flex;align-items:center;gap:10px}
-h2::before{content:"";width:9px;height:9px;background:var(--kblue);border-radius:2px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.card{background:rgba(19,28,48,.72);border:1px solid var(--line);border-radius:14px;padding:22px 20px}
-.card h3{font-size:1rem;font-weight:700;color:var(--off);margin-bottom:8px}
-.card p{font-size:.85rem;color:var(--s300)}
-
-.flagship{background:rgba(19,28,48,.72);border:1px solid var(--line);border-radius:18px;padding:40px 36px;
-  display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
-.flagship .name{font-family:'fixelPont';font-size:clamp(2.2rem,4.6vw,3.4rem);color:var(--gold);line-height:1.05}
-.flagship p{margin-top:14px;font-size:.95rem;color:var(--s300);max-width:52ch}
-.flagship .status{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ksoft);
-  border:1px solid var(--ksoft);border-radius:999px;padding:5px 14px;white-space:nowrap}
-@media(max-width:760px){.flagship{grid-template-columns:1fr}}
-
-.contact{padding:56px 0 72px}
-.contact a.big{display:inline-block;margin-top:10px;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;
-  color:var(--off);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:4px}
-.contact a.big:hover{color:var(--gold)}
-footer{border-top:1px solid var(--line);padding:26px 0 34px;font-size:.72rem;color:var(--s400)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
-</style>
+</script>
 </head>
 <body>
-<div class="band"></div>
-<header><div class="wrap">
-  <img src="/assets/logos/Horizontal Logo - Primary White.svg" alt="Keplar Flow Limited">
-  <span class="tag">Tech-Driven Innovation, Human by Design</span>
-</div></header>
+<a class="skip" href="#main">Skip to content</a>
 
-<main class="wrap">
+<header class="topnav" id="topnav">
+  <div class="bar">
+    <a class="brand" href="./index.html" aria-label="Keplar Flow home">
+      <img src="assets/img/logo-primary-white.svg" alt="Keplar Flow">
+    </a>
+    <nav class="links" id="navlinks" aria-label="Main">
+      <a href="#what">What we do</a>
+      <a href="#decent-work">Decent Work</a>
+      <a href="#community">Community</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+      <a class="btn btn-primary cta" href="form/index.html">Get the memo</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
   <section class="hero">
-    <div class="kicker">Keplar Flow Limited</div>
-    <h1>We build the technology that <span class="gold">serves everyone</span> — including the people everyone else forgets.</h1>
-    <p class="sub">An engineering firm delivering AI, DevOps and product builds for institutions — with accessible technology as a first-class discipline, not an afterthought.</p>
-    <div class="chips">
-      <span class="chip">AI Engineering</span><span class="chip">DevOps &amp; Cloud</span>
-      <span class="chip">Product Delivery</span><span class="chip">Accessible Technology</span>
-    </div>
-  </section>
-
-  <section>
-    <h2>What we do</h2>
-    <div class="grid">
-      <div class="card"><h3>AI Engineering</h3><p>Conversational assistants, document intelligence and automation — built on models that understand Nigerian languages and accents.</p></div>
-      <div class="card"><h3>DevOps &amp; Cloud</h3><p>CI/CD pipelines, self-hosted runner infrastructure and hardened delivery — proven by adversarial testing before anything ships.</p></div>
-      <div class="card"><h3>Product Delivery</h3><p>Discovery, build and handover with audit-grade documentation. We engineer, then we make your team self-sufficient.</p></div>
-      <div class="card"><h3>Accessible Technology</h3><p>Voice, sign-language and hands-free interfaces — inclusion engineered in from the first commit.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="flagship">
-      <div>
-        <div class="kicker" style="margin-bottom:10px">Flagship build</div>
-        <div class="name">ZiVA Access</div>
-        <p>Accessible banking on WhatsApp — voice, Nigerian Sign Language and hands-free modes on the assistant millions already use. In competition at Zenith Bank's Zecathon 6.0.</p>
+    <div class="glow"></div>
+    <div class="glow2"></div>
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <h1 class="rv">The future isn&rsquo;t smarter machines. <em>It&rsquo;s smarter collaboration.</em></h1>
+          <p class="sub rv">Human-centered software for Industry 5.0. We automate the busywork so your people can do the work that matters.</p>
+          <div class="actions rv">
+            <a class="btn btn-primary" href="form/index.html">Get the Decent Work memo</a>
+            <!-- CONFIG: replace the booking link below with your scheduling URL -->
+            <a class="btn btn-ghost" href="https://keplarflow.org/schedule">Book a meeting</a>
+          </div>
+          <p class="meta rv">SaaS &middot; PaaS &middot; Automation &middot; Agentic AI</p>
+        </div>
+        <div class="art rv">
+          <div class="corner" aria-hidden="true"><img src="assets/img/flow-dither-corner.svg" alt=""></div>
+          <div class="frame">
+            <img src="assets/img/flow-abstract.jpg" alt="A stream of glowing square blocks dissolving into flowing light, the Keplar Flow brand motif" width="1920" height="1920">
+          </div>
+        </div>
       </div>
-      <span class="status">In build · Lagos</span>
     </div>
   </section>
 
-  <section class="contact">
-    <h2>Work with us</h2>
-    <p style="color:var(--s300);max-width:52ch">Audits, builds and partnerships — if your institution serves people, we should talk.</p>
-    <a class="big" href="mailto:hello@keplarflow.org">hello@keplarflow.org</a>
+  <!-- MARQUEE -->
+  <div class="strip" aria-hidden="true">
+    <div class="track">
+      <span>Platform engineering <b>&#9632;</b> Workflow automation <b>&#9632;</b> ERP integration <b>&#9632;</b> Agentic AI <b>&#9632;</b> IoT and TinyML <b>&#9632;</b> Talent and learning <b>&#9632;</b> Decent work</span>
+      <span>Platform engineering <b>&#9632;</b> Workflow automation <b>&#9632;</b> ERP integration <b>&#9632;</b> Agentic AI <b>&#9632;</b> IoT and TinyML <b>&#9632;</b> Talent and learning <b>&#9632;</b> Decent work</span>
+    </div>
+  </div>
+
+  <!-- WHAT WE DO -->
+  <section class="sect" id="what">
+    <div class="wrap">
+      <div class="kicker">What we do</div>
+      <h2 class="t">Technology that earns its place</h2>
+      <p class="lead">Four practice areas, one rule: every system we ship has to make someone&rsquo;s working day better than it was yesterday.</p>
+      <div class="rows">
+        <div class="row rv">
+          <div class="n">01</div>
+          <div>
+            <h3>Platform engineering</h3>
+            <p>Cloud platforms and software-as-a-service, built as an independent vendor to grow with your business instead of against it.</p>
+          </div>
+          <div class="tag">SaaS &middot; PaaS</div>
+        </div>
+        <div class="row rv">
+          <div class="n">02</div>
+          <div>
+            <h3>Workflow automation</h3>
+            <p>Process automation and ERP integration, mapped to the way your teams actually work, not the way a manual says they should.</p>
+          </div>
+          <div class="tag">Automation</div>
+        </div>
+        <div class="row rv">
+          <div class="n">03</div>
+          <div>
+            <h3>Intelligent systems</h3>
+            <p>Agentic AI, IoT, and TinyML for decisions that need to happen at the edge, on the device, and in the moment.</p>
+          </div>
+          <div class="tag">AI &middot; IoT</div>
+        </div>
+        <div class="row rv">
+          <div class="n">04</div>
+          <div>
+            <h3>Talent and learning</h3>
+            <p>Capacity building and EdTech programs, so your people own the systems we build and can stretch them further.</p>
+          </div>
+          <div class="tag">Enablement</div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- HUMAN BY DESIGN -->
+  <section class="sect alt" id="human">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="kicker">Human by design</div>
+          <h2 class="t">Automation that multiplies people</h2>
+          <p class="lead">Keplar Flow is a human-centered technology company pioneering Industry 5.0. We combine the efficiency of automation with the things that make work worth doing: judgment, creativity, and trust. Instead of replacing human effort, we build intelligent systems that enhance collaboration, improve productivity, and create sustainable economic opportunity.</p>
+          <div class="ticks">
+            <div class="tick"><i></i><span><b>Ethical by default.</b> Systems designed so the person stays in charge.</span></div>
+            <div class="tick"><i></i><span><b>Resilient by design.</b> Built to keep working when the day does not go to plan.</span></div>
+            <div class="tick"><i></i><span><b>Scaled with care.</b> Growth that does not cost your team its dignity.</span></div>
+          </div>
+        </div>
+        <div class="media rv">
+          <img src="assets/img/human-collab.jpg" alt="Two professionals collaborating at a laptop in a modern office" width="1920" height="1079">
+          <div class="corner" aria-hidden="true"><img src="assets/img/flow-dither-corner.svg" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECENT WORK -->
+  <section class="sect" id="decent-work">
+    <div class="wrap">
+      <div class="decent">
+        <div>
+          <div class="kicker">Decent Work Initiative</div>
+          <h2 class="t">A practical commitment to fair work</h2>
+          <p class="lead">Keplar Flow is driving a Decent Work agenda that helps founders, workers, and institutions align on dignity, productivity, equity, and long-term resilience in modern workplaces.</p>
+          <div class="dlist">
+            <div class="d"><span>01</span> Clear principles for dignified and inclusive work design.</div>
+            <div class="d"><span>02</span> Responsible technology adoption across teams and communities.</div>
+            <div class="d"><span>03</span> Actionable standards for fair opportunities and outcomes.</div>
+            <div class="d"><span>04</span> Practical pathways for organizations ready to implement now.</div>
+          </div>
+        </div>
+        <aside class="memo rv">
+          <div class="pk">Free memo</div>
+          <h3>The Decent Work memo</h3>
+          <p>Our working paper on the future of decent work: what it means for founders, teams, and institutions, and how to start implementing it this quarter.</p>
+          <a class="btn btn-primary" href="form/index.html">Download the Decent Work memo</a>
+          <p class="note">You will complete a short form first, then access the memo PDF.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="sect alt" id="community">
+    <div class="wrap">
+      <div class="community">
+        <div>
+          <div class="kicker">Community</div>
+          <h2 class="t">Grow with the network</h2>
+          <p class="lead">Join a community of professionals and business owners building with us: open-source tools (Liluts, our little useful things), agentic AI ecosystems, and practical FinOps insights for scaling without the usual chaos.</p>
+        </div>
+        <div class="actions-col rv">
+          <a class="btn btn-ghost" href="https://github.com/Keplar-Flow-ltd" rel="noopener">Visit our GitHub</a>
+          <div class="soon"><span>Community chat and project drops</span><b>Discord - coming soon</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="corner-tl" aria-hidden="true"><img src="assets/img/flow-dither-corner.svg" alt=""></div>
+    <div class="corner-br" aria-hidden="true"><img src="assets/img/flow-dither-corner.svg" alt=""></div>
+    <div class="wrap">
+      <h2 class="rv">Let&rsquo;s build the future of work.</h2>
+      <p class="sub rv">Tell us what slows your business down. We will show you what changes first.</p>
+      <div class="actions rv">
+        <!-- CONFIG: replace the booking link below with your scheduling URL -->
+        <a class="btn btn-primary" href="https://keplarflow.org/schedule">Book a meeting</a>
+        <a class="btn btn-ghost" href="mailto:hello@keplarflow.org">hello@keplarflow.org</a>
+      </div>
+      <div class="lines">
+        <span>+234 814 169 3040</span>
+        <span>17 Moses Majekodunmi Crescent, Utako, Abuja, Nigeria</span>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<footer><div class="wrap">
-  <span>© 2026 Keplar Flow Limited. All rights reserved.</span>
-  <span>keplarflow.org</span>
-</div></footer>
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <img src="assets/img/logo-primary-white.svg" alt="Keplar Flow">
+        <p class="tag">Tech Driven Innovation, Human by Design.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#what">What we do</a></li>
+          <li><a href="#decent-work">Decent Work</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="form/index.html">Get the memo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@keplarflow.org">hello@keplarflow.org</a></li>
+          <li><a href="tel:+2348141693040">+234 814 169 3040</a></li>
+          <li>17 Moses Majekodunmi Crescent, Utako, Abuja, Nigeria</li>
+        </ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>&copy; 2026 Keplar Flow Limited. All rights reserved.</span>
+      <span>keplarflow.org</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
