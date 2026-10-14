@@ -31,6 +31,10 @@ jobs:
         env:
           GOOGLE_FORM_URL: ${{ secrets.GOOGLE_FORM_URL }}
         run: |
+          if [ ! -f docs/form/index.html ]; then
+            echo "Memo form retired from the site — skipping injection."
+            exit 0
+          fi
           if [ -z "$GOOGLE_FORM_URL" ]; then
             echo "Warning: GOOGLE_FORM_URL secret is not set. Using placeholder."
             exit 0
