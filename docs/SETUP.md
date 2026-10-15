@@ -43,7 +43,7 @@ https://keplar-flow-ltd.github.io/.github/form/    (form)
 
 The GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) automatically:
 1. Reads the `GOOGLE_FORM_URL` secret from repository settings
-2. Injects it into `docs/form/index.html`
+
 3. Deploys to GitHub Pages on every push to main
 
 ## Custom Domains

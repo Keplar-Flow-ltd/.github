@@ -24,20 +24,22 @@
   var toggle = document.getElementById('navtoggle');
   var links = document.getElementById('navlinks');
   if (toggle && links && nav) {
-    toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
+    function setMenu(open) {
+      nav.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? 'Close' : 'Menu';
+    }
+    toggle.addEventListener('click', function () {
+      setMenu(!nav.classList.contains('open'));
     });
     links.addEventListener('click', function (e) {
       if (e.target && e.target.tagName === 'A' && window.innerWidth <= 860) {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+        setMenu(false);
       }
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+        setMenu(false);
         toggle.focus();
       }
     });
