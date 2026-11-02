@@ -45,3 +45,13 @@ cover 820x312 (center-safe for mobile crop), LinkedIn banner 1584x396, IG
 square 1080x1080 (dark + light), IG portrait 1080x1350, IG story 1080x1920,
 and the OG link card 1200x630. Each PNG ships with its editable SVG master.
 Upload the PNG at the named size; platforms compress on their side.
+
+## Quality revision 2026-11-02 (v3 platform pack)
+All platform assets re-rendered under a geometry-asserted generator: text
+anchors single-sourced (a mid-word truncation class is now impossible), the
+all-white lockup on every dark surface (the blue-K variant measured 2.73:1 on
+navy), story content inside the platform UI safe zones, X-header content clear
+of the avatar crop with real cushion, FB cover carries the motif and tagline,
+and all designer master PNGs re-exported with 3 percent clearspace (the tight
+crops sliced anti-aliased edges). Every file passed a two-round visual and
+pixel audit before shipping.
